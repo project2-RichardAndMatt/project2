@@ -18,8 +18,7 @@ url.search = new URLSearchParams({
 posterUrl = new URL(movieApp.posterUrl); 
 
 posterUrl.search = new URLSearchParams({ 
-    poster_size: 500, 
-    file_path: "/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg"
+   
 })
 
 console.log(url);
