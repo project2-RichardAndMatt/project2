@@ -1,0 +1,40 @@
+Movie Guessing Game MVP Pseudo Code
+
+Using MovieDB API
+
+Extract list of popular movies from API 
+	Fetch data using constructors
+
+Fetch random movie 
+	Use random function to get a random movie from the popular movie list
+	
+Display blurred image of random movie
+	Create img element
+	Use random movie id to fetch movie from the images endpoint
+	Add source and alt text to image element
+	Append image element to page
+
+User input dropdown menu
+	Append fixed number of options to a drop down menu
+	User guesses by selecting a movie from dropdown menu
+	Check selected movie against the correct random movie
+
+If user guesses wrong
+		Display guess to user showing it is incorrect
+			Create li element
+			Add text with guess to li element
+			Append to ul element
+		Movie image unblurs a little more
+		Adjust user score
+User is unable to select the same movie
+	
+
+else user guesses correct
+		Reveal correct movie title
+			Change display property from none
+		DIsplay final score
+		Completely unblur movie photo
+
+Restart button press
+	Clears image and li elements
+	Run function to start game from beginning
