@@ -14,15 +14,15 @@ movieApp.getRandomMovie = () => {
         });
         const response = await fetch(url);
         const data = await response.json();
-        const filteredMovies = data.results.filter(movies => {
-            return movies.original_language === 'en';
+        const filteredMovies = data.results.filter(movie => {
+            return movie.original_language === 'en' && movie.vote_count > 10000;
         });
         
         return filteredMovies
     }
 
     
-    for (let i = 1; i < 6; i++) {
+    for (let i = 1; i < 10; i++) {
         moviePages[i-1] = getMovies(i);
     }
 
@@ -35,11 +35,39 @@ movieApp.getRandomMovie = () => {
         });
         const randomMovie = popularEnMovies[Math.floor(Math.random() * popularEnMovies.length)];
         movieApp.randomBackdrop = `https://www.themoviedb.org/t/p/original/${randomMovie.backdrop_path}`
-        img = document.querySelector('img');
+        const img = document.querySelector('img');
         img.src = movieApp.randomBackdrop;
-    });
-    
+        movieApp.guessMovie(popularEnMovies,randomMovie);
+    });  
 };
+
+movieApp.guessMovie = (popularEnMovies,randomMovie) => {
+    const dropdown = document.querySelector('select');
+    console.log(popularEnMovies);
+    popularEnMovies.forEach( movie => {
+        option = document.createElement('option');
+        option.textContent = movie.original_title;
+        option.value = movie.original_title;
+        dropdown.append(option);
+    });
+
+    dropdown.addEventListener('change', e =>{
+        const selection = e.target.value;
+        const ul = document.querySelector('ul');
+        const li = document.createElement('li');
+        const p = document.createElement('p');
+        p.textContent = selection;
+        li.append(p);
+        ul.append(li);        
+        
+        if (selection === randomMovie.original_title){
+            console.log('nice👍🏽');
+        } else{
+            console.log('oops, try again');
+        }
+    });
+}
+
 movieApp.init = () => {
     movieApp.getRandomMovie();
 };
