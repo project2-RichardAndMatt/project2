@@ -1,0 +1,24 @@
+@use './variables' as *;
+
+body { 
+    background-image: url(../../assets/newMovieCurtains.jpg); 
+    background-size: contain; 
+    background-repeat: repeat; 
+}
+
+.wrapper { 
+    width: 70%; 
+    max-width: 1200px; 
+    background: #333;
+    margin: 0 auto; 
+    height: 100vh;
+}
+
+button { 
+    outline: none; 
+    background: $gold ; 
+    border: none;
+    padding: 10px 20px; 
+    border-radius: 0.25em;
+    margin: 0 10px;
+}

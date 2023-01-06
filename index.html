@@ -3,31 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link href="https://fonts.googleapis.com/css2?family=Cairo&family=Limelight&family=Roboto&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <title>Guess the movie</title>
 </head>
 <body>
-    <header>
-        <h1>Movie Game</h1> 
-    </header>
+    <div class="wrapper">
+        <header>
+            <h1>Guess the Movie!</h1> 
+        </header> 
     <main>
-        <section>
-            <div> 
-                <img src="" alt="">
-            </div>
+        <section class="stage-section"> 
+            <div class="stage"> 
+                <img class="movie-backdrop" src="" alt="">
+            </div> 
         </section> 
         <section>
             <form action="#" name="guess"> 
                 <select name="guess" id="guess"> 
                     <option value selected>Please choose an option</option>
                 </select>
-                <button></button>
+                <button>reset</button>
             </form> 
             <ul></ul>
         </section>
-    </main>
+    </main> 
 <footer> 
-</footer>
+</footer> 
+</div> <!-- wrapper end -->
     <script src="script.js"></script>
 </body>
 </html>

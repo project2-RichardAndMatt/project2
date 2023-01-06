@@ -1,0 +1,30 @@
+@use './variables';
+
+header { 
+    display: flex; 
+    justify-content: center;
+
+} 
+
+.stage-section { 
+    height: 70vh; 
+    display: flex; 
+    justify-content: center;
+} 
+
+.stage { 
+    display: flex; 
+    justify-content: center;
+    margin: auto 0; 
+
+    .movie-backdrop { 
+        height: 100%; 
+        width: 100%; 
+        max-width: 750px; 
+    } 
+} 
+
+form { 
+    display: flex; 
+    justify-content: center;
+} 

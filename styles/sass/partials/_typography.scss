@@ -1,0 +1,22 @@
+@use './variables' as *; 
+
+header { 
+    h1 { 
+        font-family: $heading-font; 
+        font-size: 4rem; 
+        color: $gold; 
+        text-transform: uppercase;
+    }
+} 
+
+form { 
+    select { 
+        font-family: $heading-font;
+    }
+    button { 
+        font-family: $heading-font2; 
+        font-size: 1.2rem; 
+        text-transform: capitalize; 
+       
+    }
+}
