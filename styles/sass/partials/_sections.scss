@@ -6,10 +6,10 @@ header {
 
 } 
 
-.stage-section { 
-    height: 70vh; 
+.stage-section {  
     display: flex; 
     justify-content: center;
+    padding: 50px;
 } 
 
 .stage { 
@@ -24,7 +24,32 @@ header {
     } 
 } 
 
+.blur5{
+    filter: blur(25px);
+}
+
+.blur4{
+    filter: blur(15px);
+}
+
+.blur3{
+    filter: blur(10px);
+}
+
+.blur2{
+    filter: blur(5px);
+}
+
+.blur1{
+    filter: blur(2px);
+}
+
 form { 
     display: flex; 
     justify-content: center;
 } 
+
+ul{
+    color: #f7f7f7;
+    margin-left: 0 100px;
+}

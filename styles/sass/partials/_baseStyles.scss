@@ -1,17 +1,17 @@
 @use './variables' as *;
 
 body { 
-    background-image: url(../../assets/newMovieCurtains.jpg); 
-    background-size: contain; 
+    background-image: url(./../assets/newMovieCurtains.jpg); 
+    background-size: cover; 
     background-repeat: repeat; 
 }
 
 .wrapper { 
     width: 70%; 
     max-width: 1200px; 
-    background: #333;
+    background: #222;
     margin: 0 auto; 
-    height: 100vh;
+    min-height: 100vh;
 }
 
 button { 
@@ -21,4 +21,14 @@ button {
     padding: 10px 20px; 
     border-radius: 0.25em;
     margin: 0 10px;
+}
+
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 10px;
+    p{
+        margin: 0;
+        padding: 10px;
+    }
 }
