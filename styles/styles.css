@@ -228,6 +228,11 @@ html {
 
 /* fonts */
 /* site colors */
+body {
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+}
+
 header h1 {
   font-family: "Limelight", sans-serif;
   font-size: 4rem;
@@ -235,8 +240,18 @@ header h1 {
   text-transform: uppercase;
 }
 
+h2 {
+  font-family: "Cairo", sans-serif;
+  color: #f7f7f7;
+}
+
+h3 {
+  font-family: "Cairo", sans-serif;
+  color: #f7f7f7;
+}
+
 form select {
-  font-family: "Limelight", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 form button {
   font-family: "Cairo", sans-serif;
@@ -245,17 +260,17 @@ form button {
 }
 
 body {
-  background-image: url(../../assets/newMovieCurtains.jpg);
-  background-size: contain;
+  background-image: url(./../assets/newMovieCurtains.jpg);
+  background-size: cover;
   background-repeat: repeat;
 }
 
 .wrapper {
   width: 70%;
   max-width: 1200px;
-  background: #333;
+  background: #222;
   margin: 0 auto;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 button {
@@ -265,6 +280,16 @@ button {
   padding: 10px 20px;
   border-radius: 0.25em;
   margin: 0 10px;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 10px;
+}
+ul p {
+  margin: 0;
+  padding: 10px;
 }
 
 header {
@@ -277,13 +302,13 @@ header {
 }
 
 .stage-section {
-  height: 70vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  padding: 50px;
 }
 
 .stage {
@@ -301,6 +326,31 @@ header {
   max-width: 750px;
 }
 
+.blur5 {
+  -webkit-filter: blur(25px);
+          filter: blur(25px);
+}
+
+.blur4 {
+  -webkit-filter: blur(15px);
+          filter: blur(15px);
+}
+
+.blur3 {
+  -webkit-filter: blur(10px);
+          filter: blur(10px);
+}
+
+.blur2 {
+  -webkit-filter: blur(5px);
+          filter: blur(5px);
+}
+
+.blur1 {
+  -webkit-filter: blur(2px);
+          filter: blur(2px);
+}
+
 form {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -308,4 +358,9 @@ form {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+ul {
+  color: #f7f7f7;
+  margin-left: 0 100px;
 }

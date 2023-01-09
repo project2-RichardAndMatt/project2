@@ -3,7 +3,7 @@
 const movieApp = {};
 movieApp.apiUrl = "https://api.themoviedb.org/3/movie/top_rated";
 movieApp.apiKey = 'fb179007c6601d74f9777f1516562eb1';
-movieApp.getRandomMovie = () => {
+movieApp.getPopularMovies = () => {
     const popularEnMovies = [];
     const moviePages = [];
     async function getMovies(page){
@@ -22,7 +22,7 @@ movieApp.getRandomMovie = () => {
     }
 
     
-    for (let i = 1; i < 10; i++) {
+    for (let i = 1; i < 25; i++) {
         moviePages[i-1] = getMovies(i);
     }
 
@@ -33,58 +33,60 @@ movieApp.getRandomMovie = () => {
                 popularEnMovies.push(movie);
             });
         });
-        const randomMovie = popularEnMovies[Math.floor(Math.random() * popularEnMovies.length)];
-        movieApp.randomBackdrop = `https://www.themoviedb.org/t/p/original/${randomMovie.backdrop_path}`
-        const img = document.querySelector('img');
-        img.src = movieApp.randomBackdrop;
-        movieApp.guessMovie(popularEnMovies,randomMovie);
+        movieApp.getRandomMovie(popularEnMovies);
     });  
 };
 
+movieApp.getRandomMovie = popularEnMovies => {
+    const randomMovie = popularEnMovies[Math.floor(Math.random() * popularEnMovies.length)];
+    movieApp.randomBackdrop = `https://www.themoviedb.org/t/p/original/${randomMovie.backdrop_path}`
+    const img = document.querySelector('img');
+    img.src = movieApp.randomBackdrop;
+    movieApp.guessMovie(popularEnMovies, randomMovie);
+}
+
 movieApp.guessMovie = (popularEnMovies,randomMovie) => {
-    const dropdown = document.querySelector('select');
-    console.log(popularEnMovies);
+    const datalist = document.querySelector('select');
     popularEnMovies.forEach( movie => {
         option = document.createElement('option');
         option.textContent = movie.original_title;
         option.value = movie.original_title;
-        dropdown.append(option);
+        datalist.append(option);
     });
-
-    dropdown.addEventListener('change', e =>{
+    const h3 = document.querySelector('h3');
+    let guessCount = 5;
+    h3.textContent = `${guessCount} guesses remaining`
+    
+    datalist.addEventListener('change', e =>{
         const selection = e.target.value;
         const ul = document.querySelector('ul');
         const li = document.createElement('li');
-        const p = document.createElement('p');
-        p.textContent = selection;
-        li.append(p);
-        ul.append(li);        
-        
+        const p = document.createElement('p');        
+        p.textContent = selection;       
+        guessCount--;
+        const img = document.querySelector('img');
+        const h2 = document.querySelector('h2');
+
         if (selection === randomMovie.original_title){
-            console.log('nice👍🏽');
+            img.classList.remove(`blur${guessCount+1}`);
+            p.textContent = selection + '✅';
+            h2.textContent = `Congratulations!, you solved it in ${5 - guessCount} guesses`;
         } else{
-            console.log('oops, try again');
+            img.classList.remove(`blur${guessCount+1}`);
+            img.classList.add(`blur${guessCount}`);
+            p.textContent = selection + '❌';
+            if (guessCount === 0){
+                h2.textContent = `Sorry you lost. Reset to play again.`;
+            }
         }
+        li.append(p);
+        ul.append(li); 
+        h3.textContent = `${guessCount} guesses remaining`;
     });
-}
+};
 
 movieApp.init = () => {
-    movieApp.getRandomMovie();
-};
-// movieApp.getPoster = () =>{
-//     console.log(movieApp.randomMovie)
-//     movieApp.backdropUrl = `https://api.themoviedb.org/3/movie/${movieApp.randomMovie}/images`
-//     const backdropUrl = new URL(movieApp.backdropUrl);
-//     backdropUrl.search = new URLSearchParams({
-//         api_key: movieApp.apiKey
-//     });
-//     fetch (backdropUrl)
-//     .then(response => {
-//         return response.json();
-//     })
-//     .then(jsonResponse => {
-//         console.log(jsonResponse);
-//     })
-// }
+    movieApp.getPopularMovies();
+}
 
 movieApp.init();
