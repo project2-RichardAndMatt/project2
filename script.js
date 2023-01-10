@@ -73,13 +73,16 @@ movieApp.guessMovie = (popularEnMovies,randomMovie) => {
                 if (selection === randomMovie.original_title) {
                     img.classList.remove(`blur${guessCount + 1}`);
                     p.textContent = selection + '✅';
-                    h2.textContent = `Congratulations! you solved it in ${5 - guessCount} guesses`;
+                    h2.textContent = `Congratulations! you solved it in ${5 - guessCount} guesses`; 
+                    input.disabled = true;
+                    
                 } else {
                     img.classList.remove(`blur${guessCount + 1}`);
                     img.classList.add(`blur${guessCount}`);
                     p.textContent = selection + '❌';
                     if (guessCount === 0) {
-                        h2.textContent = `Sorry you lost. Reset to play again.`;
+                        h2.textContent = `Sorry you lost. The movie was '${randomMovie.original_title}'. Reset to play again.`; 
+                        input.disabled = true;
                     }
                 }
                 li.append(p);
