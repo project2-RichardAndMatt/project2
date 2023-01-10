@@ -15,14 +15,13 @@ movieApp.getPopularMovies = () => {
         const response = await fetch(url);
         const data = await response.json();
         const filteredMovies = data.results.filter(movie => {
-            return movie.original_language === 'en' && movie.vote_count > 10000;
+            return movie.original_language === 'en' && movie.vote_count > 9500;
         });
         
         return filteredMovies
     }
-
     
-    for (let i = 1; i < 25; i++) {
+    for (let i = 1; i < 136; i++) {
         moviePages[i-1] = getMovies(i);
     }
 
@@ -46,7 +45,9 @@ movieApp.getRandomMovie = popularEnMovies => {
 }
 
 movieApp.guessMovie = (popularEnMovies,randomMovie) => {
-    const datalist = document.querySelector('select');
+    const datalist = document.querySelector('datalist');
+    const input = document.querySelector('input');
+    
     popularEnMovies.forEach( movie => {
         option = document.createElement('option');
         option.textContent = movie.original_title;
@@ -57,33 +58,39 @@ movieApp.guessMovie = (popularEnMovies,randomMovie) => {
     let guessCount = 5;
     h3.textContent = `${guessCount} guesses remaining`
     
-    datalist.addEventListener('change', e =>{
-        const selection = e.target.value;
-        const ul = document.querySelector('ul');
-        const li = document.createElement('li');
-        const p = document.createElement('p');        
-        p.textContent = selection;       
-        guessCount--;
-        const img = document.querySelector('img');
-        const h2 = document.querySelector('h2');
+    input.addEventListener('input', e =>{
+        popularEnMovies.forEach( movie =>{
+            if(input.value === movie.original_title){
+                const selection = e.target.value;
+                const ul = document.querySelector('ul');
+                const li = document.createElement('li');
+                const p = document.createElement('p');
+                p.textContent = selection;
+                guessCount--;
+                const img = document.querySelector('img');
+                const h2 = document.querySelector('h2');
 
-        if (selection === randomMovie.original_title){
-            img.classList.remove(`blur${guessCount+1}`);
-            p.textContent = selection + '✅';
-            h2.textContent = `Congratulations!, you solved it in ${5 - guessCount} guesses`;
-        } else{
-            img.classList.remove(`blur${guessCount+1}`);
-            img.classList.add(`blur${guessCount}`);
-            p.textContent = selection + '❌';
-            if (guessCount === 0){
-                h2.textContent = `Sorry you lost. Reset to play again.`;
+                if (selection === randomMovie.original_title) {
+                    img.classList.remove(`blur${guessCount + 1}`);
+                    p.textContent = selection + '✅';
+                    h2.textContent = `Congratulations! you solved it in ${5 - guessCount} guesses`;
+                } else {
+                    img.classList.remove(`blur${guessCount + 1}`);
+                    img.classList.add(`blur${guessCount}`);
+                    p.textContent = selection + '❌';
+                    if (guessCount === 0) {
+                        h2.textContent = `Sorry you lost. Reset to play again.`;
+                    }
+                }
+                li.append(p);
+                ul.append(li);
+                h3.textContent = `${guessCount} guesses remaining`;
+                input.blur();
             }
-        }
-        li.append(p);
-        ul.append(li); 
-        h3.textContent = `${guessCount} guesses remaining`;
+        });        
     });
 };
+
 
 movieApp.init = () => {
     movieApp.getPopularMovies();
