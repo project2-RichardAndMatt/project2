@@ -22,10 +22,10 @@
         </section> 
         <section>
             <h3></h3>
-            <form action="#" name="guess"> 
-                <select name="guess" id="guess"> 
-                    <option value selected>Please choose an option</option>
-                </select>
+            <form action="" name="guess"> 
+                <input list="movies" type="text" onfocus="this.value=''" placeholder="Select a movie"/>
+                <datalist id="movies">
+                </datalist>
                 <button>reset</button>
             </form> 
             <ul></ul>
