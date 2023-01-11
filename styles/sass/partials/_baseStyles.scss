@@ -9,18 +9,30 @@ body {
 .wrapper { 
     width: 70%; 
     max-width: 1200px; 
-    background: #222;
+    background: $black;
     margin: 0 auto; 
     min-height: 100vh;
 }
 
 button { 
-    outline: none; 
-    background: $gold ; 
+    background: $gold; 
     border: none;
     padding: 10px 20px; 
     border-radius: 0.25em;
     margin: 0 10px;
+    cursor: pointer;
+    transition: 0.2s;
+    &:focus,
+    &:hover{
+        background-color: goldenrod;
+    }
+    &:focus{
+        border: $white 2px solid;
+    }
+}
+
+input{
+    width: 375px;
 }
 
 ul{

@@ -14,27 +14,29 @@
         <header>
             <h1>Guess the Movie!</h1> 
         </header> 
-    <main>
-        <section class="stage-section"> 
-            <div class="stage"> 
-                <img class="movie-backdrop blur5" src="" alt="">
-            </div> 
-        </section> 
-        <section>
-            <h3></h3>
-            <form action="" name="guess"> 
-                <input list="movies" type="text" onfocus="this.value=''" placeholder="Select a movie"/>
-                <datalist id="movies">
-                </datalist>
-                <button>reset</button>
-            </form> 
-            <ul></ul>
-            <h2></h2>
-        </section>
-    </main> 
-<footer> 
-</footer> 
-</div> <!-- wrapper end -->
+        <main>
+            <section class="stage-section"> 
+                <div class="stage"> 
+                    <img class="movie-backdrop blur5" src="" alt="">
+                </div> 
+            </section> 
+            <section>
+                <h3></h3>
+                <form action="" name="guess" onkeypress="return event.keyCode != 13"> 
+                    <input list="movies" type="text" onfocus="this.value=''" placeholder="Select a movie"/>
+                    <datalist id="movies">
+                    </datalist>
+                    <button>Reset</button>
+                </form> 
+                <ul></ul>
+                <h2></h2>
+            </section>
+        </main> 
+        <footer> 
+            <p>This product uses the TMDB API but is not endorsed or certified by TMDB</p>
+            <p>Developed by Matt S and Richard T @ Juno College of Technology 2023</p>
+        </footer> 
+    </div> <!-- wrapper end -->
     <script src="script.js"></script>
 </body>
 </html>
