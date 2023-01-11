@@ -231,29 +231,22 @@ html {
 body {
   font-family: "Roboto", sans-serif;
   text-align: center;
+  color: #f7f7f7;
 }
 
-header h1 {
+h1 {
   font-family: "Limelight", sans-serif;
   font-size: 4rem;
   color: #f3ce13;
   text-transform: uppercase;
 }
 
-h2 {
-  font-family: "Cairo", sans-serif;
-  color: #f7f7f7;
-}
-
+h2,
 h3 {
   font-family: "Cairo", sans-serif;
-  color: #f7f7f7;
 }
 
-form select {
-  font-family: "Roboto", sans-serif;
-}
-form button {
+button {
   font-family: "Cairo", sans-serif;
   font-size: 1.2rem;
   text-transform: capitalize;
@@ -274,12 +267,24 @@ body {
 }
 
 button {
-  outline: none;
   background: #f3ce13;
   border: none;
   padding: 10px 20px;
   border-radius: 0.25em;
   margin: 0 10px;
+  cursor: pointer;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+button:focus, button:hover {
+  background-color: goldenrod;
+}
+button:focus {
+  border: #f7f7f7 2px solid;
+}
+
+input {
+  width: 375px;
 }
 
 ul {
@@ -301,16 +306,6 @@ header {
           justify-content: center;
 }
 
-.stage-section {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  padding: 50px;
-}
-
 .stage {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -319,6 +314,7 @@ header {
       -ms-flex-pack: center;
           justify-content: center;
   margin: auto 0;
+  padding: 50px;
 }
 .stage .movie-backdrop {
   height: 100%;
@@ -363,4 +359,11 @@ form {
 ul {
   color: #f7f7f7;
   margin-left: 0 100px;
+}
+
+footer {
+  margin-top: 250px;
+}
+footer p {
+  margin: 0;
 }

@@ -1,4 +1,4 @@
-@use './variables';
+@use './variables' as *;
 
 header { 
     display: flex; 
@@ -6,16 +6,11 @@ header {
 
 } 
 
-.stage-section {  
-    display: flex; 
-    justify-content: center;
-    padding: 50px;
-} 
-
 .stage { 
     display: flex; 
     justify-content: center;
     margin: auto 0; 
+    padding: 50px;
 
     .movie-backdrop { 
         height: 100%; 
@@ -50,6 +45,13 @@ form {
 } 
 
 ul{
-    color: #f7f7f7;
+    color: $white;
     margin-left: 0 100px;
+}
+
+footer{
+    margin-top: 250px;
+    p{
+        margin: 0;
+    }
 }
