@@ -1,10 +1,105 @@
 @use './variables' as *;
 
+@mixin blur($animationName, $blurValue, $blurFrom){
+    filter: blur($blurValue);
+    animation: $animationName .5s;
+    @keyframes #{$animationName} {
+            0% {
+                filter: blur($blurFrom);
+            }
+    
+            100% {
+                filter: blur($blurValue);
+            }
+        }
+}
+
 header { 
     display: flex; 
     justify-content: center;
+    position: relative;
 
 } 
+
+.info-button{
+    position: absolute;
+    top: 15px;
+    right: 5px;
+    cursor: pointer;
+    background: none;
+    color: $white;
+    border: none;
+    transition: .2s;
+    &:hover,
+    &:focus{
+        opacity: 0.85;
+    }
+}
+
+.overlay{
+    display: none;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.info-modal{
+    display: none;
+    position: absolute;
+    z-index: 2;
+    background-color: $white;
+    color: $black;
+    width: 300px;
+    right: 40px;
+    top: 15px;
+    padding: 20px;
+    text-align: left;
+}
+
+.close{
+    color: $black;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    transition: .2s;
+    &:hover,
+    &focus{
+        opacity: 0.75;
+    }
+}
+
+.fade-in{
+    animation: fade-in 0.2s;
+    @keyframes fade-in {
+            0% {
+                opacity: 0
+            }
+    
+            100% {
+                opacity: 1
+            }
+        }
+}
+
+.fade-out{
+    animation: fade-out 0.2s;
+        @keyframes fade-out {
+            0% {
+                opacity: 1
+            }
+    
+            100% {
+                opacity: 0
+            }
+        }
+}
 
 .stage { 
     display: flex; 
@@ -19,81 +114,115 @@ header {
     } 
 } 
 
+.reset {
+    background: $white;
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: -1;
+        background-color: $gold;
+        outline: none;
+
+        transition: transform .2s ease-in;
+        transform: scaleX(0);
+        transform-origin: left;
+    }
+
+    &:hover::before,
+    &:focus::before {
+        transform: scaleX(1);
+    }
+}
+
+input {
+    width: 375px;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 10px;
+
+    li {
+        position: relative;
+    }
+
+    p {
+        margin: 0;
+        padding: 10px;
+        background-color: #222;
+    }
+}
+
+.slide-animation {
+    animation-name: slide;
+    animation-duration: .2s;
+    animation-timing-function: ease-in;
+    animation-fill-mode: none;
+}
+
+@keyframes slide {
+    0% {
+        transform: translateY(-40px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+
+}
+
 .blur5{
     filter: blur(25px); 
 }
 
 .blur4{
-    filter: blur(15px);
-    animation-name: blur4; 
-    animation-duration: 0.5s;
-     
-} 
-@keyframes blur4 { 
-    0% { 
-        filter: blur(25px);
-    } 
-    100% { 
-        filter: blur(15px);
-    }
-}
-.blur3{
-    filter: blur(10px);
-    animation-name: blur3; 
-    animation-duration: 0.5s;
+    @include blur(blur54, 15px, 25px);
 } 
 
-@keyframes blur3 { 
-    0% { 
-        filter: blur(15px);
-    } 
-    100% { 
-        filter: blur(10px);
-    }
-}
+.blur3{
+    @include blur(blur43, 10px, 15px);
+} 
+
 
 .blur2{
-    filter: blur(5px); 
-    animation-name: blur2;
-    animation-duration: 0.5s;
+    @include blur(blur32, 5px, 10px);
 }  
 
-@keyframes blur2 { 
-    0% { 
-        filter: blur(10px);
-    } 
-    100% { 
-        filter: blur(5px);
-    }
+.blur1{
+    @include blur(blur21, 2px, 5px);
+} 
+
+.blur50{
+    @include blur(blur50, 0, 25px);
 }
 
-.blur1{
-    filter: blur(2px); 
-    animation-name: blur1;
-    animation-duration: 0.5s;
-} 
+.blur40{
+    @include blur(blur40, 0, 15px);
+}
 
-@keyframes blur1 { 
-    0% { 
-        filter: blur(5px);
-    } 
-    100% { 
-        filter: blur(2px);
-    }
-} 
+.blur30{
+    @include blur(blur30, 0, 10px);
+}
 
-.blur0 { 
-    animation-name: blur0; 
-    animation-duration: 0.5s;
-} 
+.blur20{
+    @include blur(blur20, 0, 5px);
+}
 
-@keyframes blur0 { 
-    0% { 
-        filter: blur(2px);
-    } 
-    100% { 
-        filter:blur(0px);
-    }
+.blur10{
+    @include blur(blur10, 0, 2px);
 }
 
 form { 
