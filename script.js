@@ -63,26 +63,28 @@ movieApp.guessMovie = () => {
             if(input.value === movie.original_title){
                 const selection = e.target.value;
                 const li = document.createElement('li');
-                const p = document.createElement('p');
-                p.textContent = selection;
+                const p = document.createElement('p'); 
+                p.classList.add("slide-animation");
+                li.style.zIndex = (guessCount);
+                p.textContent = selection; 
                 guessCount--;
                 const h2 = document.querySelector('h2');
                 if (selection === movieApp.randomMovie.original_title) {
                     movieApp.imgElement.classList.remove(`blur${guessCount + 1}`);
-                    p.textContent = selection + '✅';
+                    p.textContent = selection + '✅'; 
                     h2.textContent = `Congratulations! you solved it in ${5 - guessCount} guesses`; 
                     input.disabled = true;
                 } else {
                     movieApp.imgElement.classList.remove(`blur${guessCount + 1}`);
                     movieApp.imgElement.classList.add(`blur${guessCount}`);
-                    p.textContent = selection + '❌';
+                    p.textContent = selection + '❌'; 
                     if (guessCount === 0) {
                         h2.textContent = `Sorry you lost. The movie was '${movieApp.randomMovie.original_title}'. Reset to play again.`; 
                         input.disabled = true;
                     }
                 }
                 li.append(p);
-                document.querySelector('ul').append(li);
+                document.querySelector('ul').append(li); 
                 h3.textContent = `${guessCount} guesses remaining`;
                 input.blur();
             }

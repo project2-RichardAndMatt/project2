@@ -20,28 +20,87 @@ header {
 } 
 
 .blur5{
-    filter: blur(25px);
+    filter: blur(25px); 
 }
 
 .blur4{
     filter: blur(15px);
+    animation-name: blur4; 
+    animation-duration: 0.5s;
+     
+} 
+@keyframes blur4 { 
+    0% { 
+        filter: blur(25px);
+    } 
+    100% { 
+        filter: blur(15px);
+    }
 }
-
 .blur3{
     filter: blur(10px);
+    animation-name: blur3; 
+    animation-duration: 0.5s;
+} 
+
+@keyframes blur3 { 
+    0% { 
+        filter: blur(15px);
+    } 
+    100% { 
+        filter: blur(10px);
+    }
 }
 
 .blur2{
-    filter: blur(5px);
+    filter: blur(5px); 
+    animation-name: blur2;
+    animation-duration: 0.5s;
+}  
+
+@keyframes blur2 { 
+    0% { 
+        filter: blur(10px);
+    } 
+    100% { 
+        filter: blur(5px);
+    }
 }
 
 .blur1{
-    filter: blur(2px);
+    filter: blur(2px); 
+    animation-name: blur1;
+    animation-duration: 0.5s;
+} 
+
+@keyframes blur1 { 
+    0% { 
+        filter: blur(5px);
+    } 
+    100% { 
+        filter: blur(2px);
+    }
+} 
+
+.blur0 { 
+    animation-name: blur0; 
+    animation-duration: 0.5s;
+} 
+
+@keyframes blur0 { 
+    0% { 
+        filter: blur(2px);
+    } 
+    100% { 
+        filter:blur(0px);
+    }
 }
 
 form { 
     display: flex; 
-    justify-content: center;
+    justify-content: center; 
+    position: relative;
+    z-index: 10;
 } 
 
 ul{
