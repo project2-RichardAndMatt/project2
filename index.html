@@ -4,15 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <link href="https://fonts.googleapis.com/css2?family=Cairo&family=Limelight&family=Roboto&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Cairo&family=Bebas+Neue&family=Roboto&display=swap"
         rel="stylesheet">
+    <script src="https://kit.fontawesome.com/8b550eb162.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./styles/styles.css">
     <title>Guess the movie</title>
 </head>
 <body>
     <div class="wrapper">
         <header>
-            <h1>Guess the Movie!</h1> 
+            <h1>Guess the Movie</h1>
+            <button class="info-button" onclick="movieApp.info()"><i class="fa-solid fa-circle-info fa-lg"></i></button>
+            <div class="info">
+                <div class="overlay">
+                </div>
+                <div class="info-modal">
+                    <p>Type or click the form below to find a movie and select your guess! If you select the wrong movie, the back drop
+                    will become less blurry
+                    and you can try again. But be careful, there are only 5 guesses before you lose!</p>
+                    <button class="close"><i class="fa-solid fa-xmark fa-lg"></i></button>
+                </div>
+            </div>
+            
         </header> 
         <main>
             <section class="stage-section"> 
@@ -26,7 +39,7 @@
                     <input list="movies" type="text" onfocus="this.value=''" placeholder="Select a movie"/>
                     <datalist id="movies">
                     </datalist>
-                    <button>Reset</button>
+                    <button class="reset">Reset</button>
                 </form> 
                 <ul></ul>
                 <h2></h2>

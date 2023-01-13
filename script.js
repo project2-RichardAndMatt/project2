@@ -71,6 +71,7 @@ movieApp.guessMovie = () => {
                 const h2 = document.querySelector('h2');
                 if (selection === movieApp.randomMovie.original_title) {
                     movieApp.imgElement.classList.remove(`blur${guessCount + 1}`);
+                    movieApp.imgElement.classList.add(`blur${guessCount + 1}0`);
                     p.textContent = selection + '✅'; 
                     h2.textContent = `Congratulations! you solved it in ${5 - guessCount} guesses`; 
                     input.disabled = true;
@@ -91,6 +92,29 @@ movieApp.guessMovie = () => {
         });        
     });
 };
+
+movieApp.info = () => {
+    infoModal = document.querySelector('.info-modal');
+    overlay = document.querySelector('.overlay');
+    infoModal.style.display = 'block';
+    overlay.style.display = 'block';
+    infoModal.classList.add('fade-in');
+    overlay.classList.add('fade-in');
+    document.querySelector('.info').addEventListener('click', e => {
+        if (e.target === overlay || e.target === document.querySelector('.fa-xmark')){
+            infoModal.classList.remove('fade-in');
+            overlay.classList.remove('fade-in');
+            infoModal.classList.add('fade-out');
+            overlay.classList.add('fade-out');
+            infoModal.addEventListener( 'animationend', () => {
+                infoModal.classList.remove('fade-out');
+                overlay.classList.remove('fade-out');
+                infoModal.style.display = 'none';
+                overlay.style.display = 'none';
+            }, { once: true });
+        } 
+    });
+}
 
 movieApp.init = () => {
     movieApp.getPopularMovies();

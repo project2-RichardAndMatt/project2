@@ -8,9 +8,12 @@ body{
 
 h1 { 
     font-family: $heading-font; 
-    font-size: 4rem; 
-    color: $gold; 
+    font-size: 4rem;  
     text-transform: uppercase;
+    background-color: #E50914;
+    text-shadow: 6px 4px 0px $black;
+    padding: 20px;
+    letter-spacing: 3px;
 }
 
 h2,
