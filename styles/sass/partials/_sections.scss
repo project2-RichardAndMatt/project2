@@ -18,7 +18,6 @@ header {
     display: flex; 
     justify-content: center;
     position: relative;
-
 } 
 
 .info-button{
@@ -38,7 +37,7 @@ header {
 
 .overlay{
     display: none;
-    z-index: 1;
+    z-index: 100;
     background-color: rgba(0, 0, 0, 0.5);
     position: fixed;
     top: 0;
@@ -50,7 +49,7 @@ header {
 .info-modal{
     display: none;
     position: absolute;
-    z-index: 2;
+    z-index: 150;
     background-color: $white;
     color: $black;
     width: 300px;
@@ -146,6 +145,14 @@ header {
     }
 }
 
+form {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 10;
+    padding: 0 25px;
+} 
+
 input {
     width: 375px;
 }
@@ -153,7 +160,8 @@ input {
 ul {
     list-style: none;
     margin: 0;
-    padding: 10px;
+    padding: 10px; 
+    color: $white;
 
     li {
         position: relative;
@@ -225,20 +233,8 @@ ul {
     @include blur(blur10, 0, 2px);
 }
 
-form { 
-    display: flex; 
-    justify-content: center; 
-    position: relative;
-    z-index: 10;
-} 
-
-ul{
-    color: $white;
-    margin-left: 0 100px;
-}
-
 footer{
-    margin-top: 250px;
+     margin-top: 250px;
     p{
         margin: 0;
     }

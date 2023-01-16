@@ -4,8 +4,9 @@ movieApp.apiKey = 'fb179007c6601d74f9777f1516562eb1';
 movieApp.popularEnMovies = [];
 
 
-async function getMoviesByPage(page){
-    const url = new URL(movieApp.apiUrl);
+async function getMoviesByPage(page) { 
+    try{  
+    const url = new URL(movieApp.apiUrl);   
     url.search = new URLSearchParams({
         api_key: movieApp.apiKey,
         page: page
@@ -14,8 +15,14 @@ async function getMoviesByPage(page){
     const data = await response.json();
     const filteredMovies = data.results.filter(movie => {
         return movie.original_language === 'en' && movie.vote_count > 9500;
-    });
-    return filteredMovies
+    }); 
+     return filteredMovies 
+
+    }catch (e) { 
+        console.error('An Error occured'); 
+        document.querySelector('.error-page').style.display = 'block';
+    }
+    
 };
 
 movieApp.getPopularMovies = () => {
@@ -43,12 +50,13 @@ movieApp.getRandomMovie = () => {
     movieApp.imgElement.alt = `Backdrop from the movie '${movieApp.randomMovie.original_title}'`;
 }
 
-movieApp.populateMovieList = () => {
+movieApp.populateMovieList = () => { 
+    movieApp.datalist = document.querySelector('datalist');
     movieApp.popularEnMovies.forEach( movie => {
         const option = document.createElement('option');
         option.textContent = movie.original_title;
         option.value = movie.original_title;
-        document.querySelector('datalist').append(option);
+        movieApp.datalist.append(option);
     });
     movieApp.guessMovie();
 }
@@ -59,7 +67,7 @@ movieApp.guessMovie = () => {
     h3.textContent = `${guessCount} guesses remaining`
     const input = document.querySelector('input');
     input.addEventListener('input', e =>{
-        movieApp.popularEnMovies.forEach( movie =>{
+        movieApp.popularEnMovies.forEach((movie, index) =>{
             if(input.value === movie.original_title){
                 const selection = e.target.value;
                 const li = document.createElement('li');
@@ -79,9 +87,11 @@ movieApp.guessMovie = () => {
                     movieApp.imgElement.classList.remove(`blur${guessCount + 1}`);
                     movieApp.imgElement.classList.add(`blur${guessCount}`);
                     p.textContent = selection + '❌'; 
+                    movieApp.datalist.children[index].remove(); 
+                    movieApp.popularEnMovies.splice(index, 1);
                     if (guessCount === 0) {
                         h2.textContent = `Sorry you lost. The movie was '${movieApp.randomMovie.original_title}'. Reset to play again.`; 
-                        input.disabled = true;
+                        input.disabled = true; 
                     }
                 }
                 li.append(p);
